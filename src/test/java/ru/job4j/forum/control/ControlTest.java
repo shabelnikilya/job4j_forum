@@ -13,17 +13,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.job4j.forum.Main;
-import ru.job4j.forum.model.Post;
-import ru.job4j.forum.service.ForumService;
 
 @SpringBootTest(classes = Main.class)
 @AutoConfigureMockMvc
-public class IndexControlTest {
+public class ControlTest {
 
     @Autowired
     private MockMvc mockMvc;
-    @Autowired
-    private ForumService service;
 
     @Test
     @WithMockUser
@@ -66,10 +62,9 @@ public class IndexControlTest {
     @Test
     @WithMockUser
     public void testEditPostWhenParamEqualsTwoAndEqualsPost() throws Exception {
-        this.mockMvc.perform(get("/edit").param("id", "2"))
+        this.mockMvc.perform(get("/edit").param("id", "1"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("post", service.findPostById(2)))
                 .andExpect(view().name("post/edit"));
     }
 
