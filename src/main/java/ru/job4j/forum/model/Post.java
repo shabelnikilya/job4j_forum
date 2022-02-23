@@ -1,14 +1,17 @@
 package ru.job4j.forum.model;
 
+import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String description;
-    private List<String> discuss;
     private Date created = new Date();
 
     public Post() {
@@ -18,13 +21,6 @@ public class Post {
         this.id = id;
         this.name = name;
         this.description = description;
-    }
-
-    public Post(int id, String name, String description, List<String> discuss) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.discuss = discuss;
     }
 
     public int getId() {
@@ -57,14 +53,6 @@ public class Post {
 
     public void setCreated(Date created) {
         this.created = created;
-    }
-
-    public List<String> getDiscuss() {
-        return discuss;
-    }
-
-    public void setDiscuss(List<String> discuss) {
-        this.discuss = discuss;
     }
 
     @Override

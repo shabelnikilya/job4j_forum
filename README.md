@@ -5,9 +5,9 @@ core, mvc, security, boot.
 
 Визуализация приожения:
 
-![ScreenShot](images/first.jpg)
-![ScreenShot](images/two.jpg)
-![ScreenShot](images/three.jpg)
-![ScreenShot](images/four.jpg)
-![ScreenShot](images/five.jpg)
+<br>![ScreenShot](images/first.jpg)
+<br>![ScreenShot](images/two.jpg)
+<br>![ScreenShot](images/three.jpg)
+<br>![ScreenShot](images/four.jpg)
+<br>![ScreenShot](images/five.jpg)
 

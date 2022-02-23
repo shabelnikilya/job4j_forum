@@ -17,8 +17,7 @@ public class PostRepository implements PostStore {
     public PostRepository() {
         posts.put(1, new Post(1,
                         "Продажа",
-                        "Продаю холодильник",
-                List.of("За сколько продаешь?", "Готов завтра купить!")));
+                        "Продаю холодильник"));
     }
 
     @Override

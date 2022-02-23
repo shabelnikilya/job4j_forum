@@ -2,19 +2,16 @@ package ru.job4j.forum.service;
 
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.User;
-import ru.job4j.forum.repository.PostRepository;
-import ru.job4j.forum.repository.PostStore;
-import ru.job4j.forum.repository.UserRepository;
-import ru.job4j.forum.repository.UserStore;
+import ru.job4j.forum.repository.*;
 
 import java.util.Collection;
 
 @org.springframework.stereotype.Service
 public class ForumService implements Service {
-    private final PostStore postStore;
+    private final PostDataRepository postStore;
     private final UserStore userStore;
 
-    public ForumService(PostRepository postStore, UserRepository userStore) {
+    public ForumService(PostDataRepository postStore, UserRepository userStore) {
         this.postStore = postStore;
         this.userStore = userStore;
     }
@@ -31,12 +28,12 @@ public class ForumService implements Service {
 
     @Override
     public Collection<Post> findAllPosts() {
-        return postStore.findAllPosts();
+        return (Collection<Post>) postStore.findAll();
     }
 
     @Override
     public void addPost(Post post) {
-        postStore.addPost(post);
+        postStore.save(post);
     }
 
     @Override
@@ -46,6 +43,6 @@ public class ForumService implements Service {
 
     @Override
     public Post findPostById(int id) {
-        return postStore.findById(id);
+        return postStore.findById(id).orElse(null);
     }
 }
