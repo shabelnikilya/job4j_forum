@@ -1,28 +1,42 @@
 package ru.job4j.forum.model;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String userName;
+    private String username;
     private String password;
-    private List<Post> posts;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "authority_id")
+    private Authority authority;
+
+    private boolean enabled;
 
     public User() {
     }
 
-    public User(String userName, String password, List<Post> posts) {
-        this.userName = userName;
+    public User(String userName, String password) {
+        this.username = userName;
         this.password = password;
-        this.posts = posts;
     }
 
-    public User(int id, String userName, String password, List<Post> posts) {
+    public User(int id, String userName, String password) {
         this.id = id;
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
-        this.posts = posts;
+    }
+
+    public User(String userName, String password, Authority authority, boolean enabled) {
+        this.username = userName;
+        this.password = password;
+        this.authority = authority;
+        this.enabled = enabled;
     }
 
     public int getId() {
@@ -33,12 +47,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -49,12 +63,20 @@ public class User {
         this.password = password;
     }
 
-    public List<Post> getPosts() {
-        return posts;
+    public Authority getAuthority() {
+        return authority;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
+    public void setAuthority(Authority authority) {
+        this.authority = authority;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Override

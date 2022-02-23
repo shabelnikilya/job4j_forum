@@ -38,6 +38,7 @@
             <th scope="col">Название</th>
             <th scope="col">Содержание</th>
             <th scope="col">Изменить обсуждение</th>
+            <th scope="col">Пользователь поста</th>
         </tr>
         </thead>
         <tbody>
@@ -54,6 +55,9 @@
                 </td>
                 <td>
                     <a href="<c:url value="/edit?id=${post.id}"/>" style="color: black">&#9988</a>
+                </td>
+                <td>
+                    <c:out value="${post.user.username}"/>
                 </td>
             </tr>
         </c:forEach>

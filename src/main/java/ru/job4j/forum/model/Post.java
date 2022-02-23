@@ -12,7 +12,11 @@ public class Post {
     private int id;
     private String name;
     private String description;
-    private Date created = new Date();
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created = new Date(System.currentTimeMillis());
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "users_id", nullable = false, updatable = false)
+    private User user;
 
     public Post() {
     }
@@ -21,6 +25,13 @@ public class Post {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public Post(String name, String description, Date created, User user) {
+        this.name = name;
+        this.description = description;
+        this.created = created;
+        this.user = user;
     }
 
     public int getId() {
@@ -53,6 +64,14 @@ public class Post {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

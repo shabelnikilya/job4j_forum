@@ -16,9 +16,9 @@
         <tr>
             <td colspan='2'><input name="submit" type="submit" value="register" /></td>
         </tr>
-        <c:if test="${not empty errorUser}">
+        <c:if test="${not empty error}">
             <div style="color:red; font-weight: bold; margin: 30px 0px;">
-                    ${errorUser}
+                    ${error}
             </div>
         </c:if>
     </table>
