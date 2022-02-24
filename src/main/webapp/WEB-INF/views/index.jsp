@@ -64,6 +64,6 @@
         </c:forEach>
         </tbody>
     </table>
-<div align="center"><a href="<c:url value='/create'/>"><font size="4" color="black">Добавить обсуждение</font></a></div>
+    <div align="center"><a href="<c:url value='/create'/>"><font size="4" color="black">Добавить обсуждение</font></a></div>
 </body>
 </html>
