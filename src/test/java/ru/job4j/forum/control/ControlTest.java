@@ -25,7 +25,6 @@ import ru.job4j.forum.service.ForumService;
 @SpringBootTest(classes = Main.class)
 @AutoConfigureMockMvc
 public class ControlTest {
-
     @Autowired
     private MockMvc mockMvc;
     @MockBean
